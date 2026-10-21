@@ -2,9 +2,9 @@
 
 Owner: Malikan Inc. · Started: 2026-10-16 · Companion to [ROADMAP.md](../ROADMAP.md)
 
-This plan takes AssureKit from an empty folder in VS Code to v1.0.0 on 2027-01-10. The first two releases are broken down to the issue level; later releases are outlined and get the same breakdown at the start of their phase.
+This plan takes AssureKit from an empty folder in VS Code to v1.0.0 on 2027-05-09. The first two releases are broken down to the issue level; later releases are outlined and get the same breakdown at the start of their phase.
 
-**Capacity assumption:** about 12–15 hours a week (four weekday evenings plus one weekend block). If a phase slips, move its target date in ROADMAP.md and say why. Never back-fill dates.
+**Capacity assumption:** about 12–15 hours a week (four weekday evenings plus one weekend block). If a phase slips, move its target date in ROADMAP.md and say why. Never back-fill dates. On 2026-10-21 all release targets moved 17 weeks later; see the Schedule changes table in ROADMAP.md.
 
 ---
 
@@ -12,7 +12,7 @@ This plan takes AssureKit from an empty folder in VS Code to v1.0.0 on 2027-01-1
 
 | Evidence | What produces it | First available |
 | --- | --- | --- |
-| Dated releases that match the business plan, starting with v0.1.0, plus a changelog | Git tag → release workflow → GitHub Release with built packages; dated CHANGELOG sections; a Zenodo DOI for each release | v0.1.0, 2026-11-01, then every two weeks |
+| Dated releases that match the business plan, starting with v0.1.0, plus a changelog | Git tag → release workflow → GitHub Release with built packages; dated CHANGELOG sections; a Zenodo DOI for each release | v0.1.0, 2027-02-28, then every two weeks |
 | Commit history spread over weeks and months | One branch and pull request per issue, three to five working sessions a week, signed commits | First push, this week |
 | A working module with tests and passing automated builds | `assurekit-synth` with CI on Python 3.12 and 3.13 and coverage of at least 85%, then `assurekit-eval` | v0.1.0 |
 | An open-source licence | `LICENSE` (Apache-2.0) and `NOTICE` in the first commit | First commit |
@@ -26,7 +26,7 @@ The value of this record is that it is genuine. Commit as you actually work. Nev
 
 - [ ] **Employer clearance.** You work at a credit union and AssureKit targets credit unions. Get written outside-activity clearance under your employer's policies. Build only on a personal computer and personal accounts, with no employer code, data, configuration or time.
 - [ ] **Attorney check.** Confirm with your attorney which repository artifacts they want as exhibits (release pages, CI history, commit graph, Zenodo records) and how to capture them.
-- [ ] **GitHub organization.** Create the organization at github.com/organizations/plan (Free plan). Try `malikan`; if taken, use `malikan-inc` and replace `malikan-inc/assurekit` across the repository with VS Code's **Find in Files → Replace** (Ctrl/Cmd+Shift+H). Add the Malikan website and a contact email to the organization profile, and later verify the Malikan domain under the organization's settings.
+- [ ] **GitHub organization.** Create the `malikan-inc` organization at github.com/organizations/plan (Free plan); the repository is `malikan-inc/assurekit`. Add the Malikan website and a contact email to the organization profile, and later verify the Malikan domain under the organization's settings.
 - [ ] **Business plan alignment.** Use the same release dates in the business plan as in ROADMAP.md.
 
 ---
@@ -139,7 +139,7 @@ git switch main && git pull
 
 ---
 
-## 6. v0.1.0 — `assurekit-synth` (2026-10-17 to 2026-11-01)
+## 6. v0.1.0 — `assurekit-synth` (2026-10-17 to 2027-02-28)
 
 ### Package layout
 
@@ -175,16 +175,16 @@ packages/synth/
 | --- | --- | --- |
 | S-01 | Seeded random source | Oct 17 |
 | S-02 | Money helpers | Oct 18 |
-| S-03 | Record models and reference data | Oct 19–20 |
-| S-04 | Member generator | Oct 21 |
-| S-05 | Account generator | Oct 22 |
-| S-06 | Normal card-transaction generator | Oct 23–24 |
-| S-07 | Fraud pattern: card testing | Oct 25 |
-| S-08 | Fraud pattern: account takeover | Oct 26 |
-| S-09 | Writers and manifest | Oct 27 |
-| S-10 | Command-line interface | Oct 28 |
-| S-11 | Golden-hash determinism and PII guard tests | Oct 29 |
-| S-12 | Docs and release v0.1.0 | Oct 30 – Nov 1 |
+| S-03 | Record models and reference data | Oct 21 – Nov 1 |
+| S-04 | Member generator | Nov 2–15 |
+| S-05 | Account generator | Nov 16–29 |
+| S-06 | Normal card-transaction generator | Nov 30 – Dec 20 |
+| S-07 | Fraud pattern: card testing | Dec 21 – Jan 3 |
+| S-08 | Fraud pattern: account takeover | Jan 4–17 |
+| S-09 | Writers and manifest | Jan 18–31 |
+| S-10 | Command-line interface | Feb 1–14 |
+| S-11 | Golden-hash determinism and PII guard tests | Feb 15–21 |
+| S-12 | Docs and release v0.1.0 | Feb 22–28 |
 
 Acceptance criteria for each issue are in the GitHub issues created by the bootstrap script.
 
@@ -441,24 +441,24 @@ Number of transactions per card per day: `weighted_choice([0, 1, 2, 3], [0.35, 0
 
 ---
 
-## 7. v0.2.0 — `assurekit-eval` (2026-11-02 to 2026-11-15)
+## 7. v0.2.0 — `assurekit-eval` (2027-03-01 to 2027-03-14)
 
 ### Schedule
 
 | Issue | Work | Target |
 | --- | --- | --- |
-| E-01 | Package skeleton and workspace wiring | Nov 2 |
-| E-02 | Golden dataset format, loader, sample policy-QA dataset | Nov 3 |
-| E-03 | Provider interface and offline mock provider | Nov 4 |
-| E-04 | Deterministic metrics | Nov 5–6 |
-| E-05 | Groundedness overlap metric | Nov 7 |
-| E-06 | Judge interface and mock judge | Nov 8 |
-| E-07 | Judge calibration report | Nov 9 |
-| E-08 | Runner and thresholds | Nov 10 |
-| E-09 | Results JSON and JUnit reporters | Nov 11 |
-| E-10 | Command-line interface | Nov 12 |
-| E-11 | Optional live provider adapter | Nov 13 |
-| E-12 | Docs and release v0.2.0 | Nov 14–15 |
+| E-01 | Package skeleton and workspace wiring | Mar 1 |
+| E-02 | Golden dataset format, loader, sample policy-QA dataset | Mar 2 |
+| E-03 | Provider interface and offline mock provider | Mar 3 |
+| E-04 | Deterministic metrics | Mar 4–5 |
+| E-05 | Groundedness overlap metric | Mar 6 |
+| E-06 | Judge interface and mock judge | Mar 7 |
+| E-07 | Judge calibration report | Mar 8 |
+| E-08 | Runner and thresholds | Mar 9 |
+| E-09 | Results JSON and JUnit reporters | Mar 10 |
+| E-10 | Command-line interface | Mar 11 |
+| E-11 | Optional live provider adapter | Mar 12 |
+| E-12 | Docs and release v0.2.0 | Mar 13–14 |
 
 ### Wiring the second package (E-01)
 
@@ -566,10 +566,10 @@ datasets/assurebank-policy-qa.jsonl                            (E-02)
 
 | Release | Target | Main work | Exit gate |
 | --- | --- | --- | --- |
-| v0.3.0 | Nov 29 | **AssureBank local mode:** TypeScript on Node 24; Hono API (the same handlers later run on AWS Lambda); React + Vite web UI; repository interface with an in-memory store; policy chatbot stub using keyword retrieval over the v1/v2 fee documents; fixed-weight fraud score with a version string; OpenTelemetry with a file span exporter for CI. **`@assurekit/flows`:** Playwright fixtures, `login()` and `transferFunds()` business tasks, role and test-id locators only (enforced with `eslint-plugin-playwright`). **`@assurekit/contracts`:** OpenAPI 3.1 document for AssureBank, response validation, breaking-change check with `oasdiff`. Add a pnpm workspace and a Node job to CI. | **G1:** `pnpm dev` starts AssureBank; flows pass in CI |
-| v0.4.0 | Dec 13 | Three fault switches as environment flags; seam tests that read the span file by correlation ID; `assurekit-redteam` (Python) probes tagged with OWASP IDs; governed agent definitions in `packages/agents` (run `npx playwright init-agents --loop=vscode`, then add the ADR 0003 rules); CycloneDX ML-BOM for the fraud model and the chatbot | **G2:** CI fails each fault switch at the expected gate |
-| v0.5.0 | Dec 27 | `@assurekit/evidence`: collect results JSON, JUnit, SARIF and SBOM; map tags to control IDs from YAML mapping packs (identifiers only); sign the bundle with Sigstore in GitHub Actions; AWS CDK deployment of AssureBank | Every CI run on `main` produces a bundle that verifies |
-| v1.0.0 | Jan 10 | Documentation site on GitHub Pages; OpenSSF Scorecard workflow and badge; demo video of the fault switches; an outside engineer runs the quick start | **G3:** quick start completed unaided by someone who did not build it |
+| v0.3.0 | Mar 28 | **AssureBank local mode:** TypeScript on Node 24; Hono API (the same handlers later run on AWS Lambda); React + Vite web UI; repository interface with an in-memory store; policy chatbot stub using keyword retrieval over the v1/v2 fee documents; fixed-weight fraud score with a version string; OpenTelemetry with a file span exporter for CI. **`@assurekit/flows`:** Playwright fixtures, `login()` and `transferFunds()` business tasks, role and test-id locators only (enforced with `eslint-plugin-playwright`). **`@assurekit/contracts`:** OpenAPI 3.1 document for AssureBank, response validation, breaking-change check with `oasdiff`. Add a pnpm workspace and a Node job to CI. | **G1:** `pnpm dev` starts AssureBank; flows pass in CI |
+| v0.4.0 | Apr 11 | Three fault switches as environment flags; seam tests that read the span file by correlation ID; `assurekit-redteam` (Python) probes tagged with OWASP IDs; governed agent definitions in `packages/agents` (run `npx playwright init-agents --loop=vscode`, then add the ADR 0003 rules); CycloneDX ML-BOM for the fraud model and the chatbot | **G2:** CI fails each fault switch at the expected gate |
+| v0.5.0 | Apr 25 | `@assurekit/evidence`: collect results JSON, JUnit, SARIF and SBOM; map tags to control IDs from YAML mapping packs (identifiers only); sign the bundle with Sigstore in GitHub Actions; AWS CDK deployment of AssureBank | Every CI run on `main` produces a bundle that verifies |
+| v1.0.0 | May 9 | Documentation site on GitHub Pages; OpenSSF Scorecard workflow and badge; demo video of the fault switches; an outside engineer runs the quick start | **G3:** quick start completed unaided by someone who did not build it |
 
 ---
 

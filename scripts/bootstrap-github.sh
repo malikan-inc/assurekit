@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Creates AssureKit labels, dated milestones and the v0.1.0 and v0.2.0 issues.
 # Run once from the repository root after `gh auth login` and the first push.
-# Safe to re-run: existing labels are updated, existing milestones and issues are skipped.
+# Safe to re-run: existing labels are updated, open milestones get the due dates below,
+# closed milestones and existing issues are left alone.
 set -euo pipefail
 
 gh repo view --json nameWithOwner -q .nameWithOwner >/dev/null || {
@@ -20,21 +21,27 @@ label "type:release" "b60205" "Release work"
 
 echo "== Milestones"
 milestone() {
-  local title="$1" due="$2" desc="$3"
-  if gh api "repos/{owner}/{repo}/milestones?state=all&per_page=100" -q '.[].title' | grep -Fxq "$title"; then
-    echo "  $title exists, skipped"
-  else
+  local title="$1" due="$2" desc="$3" num state
+  read -r num state < <(gh api "repos/{owner}/{repo}/milestones?state=all&per_page=100" \
+    -q ".[] | select(.title == \"$title\") | \"\(.number) \(.state)\"") || true
+  if [[ -z "${num:-}" ]]; then
     gh api -X POST "repos/{owner}/{repo}/milestones" \
       -f title="$title" -f due_on="${due}T23:59:59Z" -f description="$desc" >/dev/null
-    echo "  $title due $due"
+    echo "  $title created, due $due"
+  elif [[ "$state" == "open" ]]; then
+    gh api -X PATCH "repos/{owner}/{repo}/milestones/$num" \
+      -f due_on="${due}T23:59:59Z" -f description="$desc" >/dev/null
+    echo "  $title updated, due $due"
+  else
+    echo "  $title closed, left unchanged"
   fi
 }
-milestone "v0.1.0" "2026-11-01" "Synthetic data: assurekit-synth"
-milestone "v0.2.0" "2026-11-15" "LLM evaluation: assurekit-eval"
-milestone "v0.3.0" "2026-11-29" "Reference app: AssureBank, flows, contracts (G1)"
-milestone "v0.4.0" "2026-12-13" "Seams and red team (G2)"
-milestone "v0.5.0" "2026-12-27" "Evidence bundle"
-milestone "v1.0.0" "2027-01-10" "General availability (G3)"
+milestone "v0.1.0" "2027-02-28" "Synthetic data: assurekit-synth"
+milestone "v0.2.0" "2027-03-14" "LLM evaluation: assurekit-eval"
+milestone "v0.3.0" "2027-03-28" "Reference app: AssureBank, flows, contracts (G1)"
+milestone "v0.4.0" "2027-04-11" "Seams and red team (G2)"
+milestone "v0.5.0" "2027-04-25" "Evidence bundle"
+milestone "v1.0.0" "2027-05-09" "General availability (G3)"
 
 echo "== Issues"
 # usage: issue <milestone> <labels> <title>  (body on stdin)
