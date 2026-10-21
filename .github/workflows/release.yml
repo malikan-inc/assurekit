@@ -1,0 +1,44 @@
+name: release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install and test
+        run: |
+          uv sync --locked
+          uv run pytest
+
+      - name: Build packages
+        run: uv build --package assurekit-synth --out-dir dist
+
+      - name: Extract release notes from CHANGELOG
+        run: |
+          awk -v ver="${GITHUB_REF_NAME#v}" '
+            $0 ~ "^## \\[" ver "\\]" { found = 1; next }
+            /^## \[/ { found = 0 }
+            found
+          ' CHANGELOG.md > release-notes.md
+          test -s release-notes.md || { echo "No CHANGELOG section for ${GITHUB_REF_NAME}"; exit 1; }
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --title "AssureKit $GITHUB_REF_NAME" \
+            --notes-file release-notes.md \
+            --verify-tag

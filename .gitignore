@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Node (from v0.3.0)
+node_modules/
+.pnpm-store/
+playwright-report/
+test-results/
+blob-report/
+
+# AWS CDK (from v0.3.0)
+cdk.out/
+
+# Generated data and local secrets
+out/
+.env
+.env.*
+!.env.example
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/

@@ -1,0 +1,51 @@
+[project]
+name = "assurekit-workspace"
+version = "0.0.0"
+description = "AssureKit monorepo workspace root (not published)"
+requires-python = ">=3.12"
+dependencies = ["assurekit-synth"]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+assurekit-synth = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/synth"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3",
+  "pytest-cov>=6.0",
+  "hypothesis>=6.100",
+  "ruff>=0.8",
+  "mypy>=1.13",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["assurekit_synth"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["packages/synth/src"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages"]
+addopts = "-ra --strict-markers --import-mode=importlib"
+
+[tool.coverage.run]
+source_pkgs = ["assurekit_synth"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true

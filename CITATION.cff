@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use AssureKit, please cite it using these metadata."
+title: "AssureKit: open-source release assurance for FinTechs and credit unions"
+type: software
+authors:
+  - given-names: Ian
+    family-names: Diakonov
+    affiliation: "Malikan Inc."
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - name: "Malikan Inc."
+repository-code: "https://github.com/malikan/assurekit"
+license: Apache-2.0
+abstract: >-
+  AssureKit tests the application, its data and its AI together in one
+  automated release pipeline and turns the results into evidence mapped to
+  AI risk frameworks used in financial services.
+keywords:
+  - software testing
+  - quality assurance
+  - AI evaluation
+  - synthetic data
+  - financial services
+  - credit unions
+# At each release add:
+# version: "0.1.0"
+# date-released: "YYYY-MM-DD"

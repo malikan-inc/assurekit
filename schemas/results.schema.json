@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/malikan/assurekit/schemas/results.schema.json",
+  "title": "AssureKit results v1",
+  "description": "Shared results format written by every AssureKit tool and read by @assurekit/evidence.",
+  "type": "object",
+  "required": ["schema", "tool", "tool_version", "run_id", "cases"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "assurekit.results/v1" },
+    "tool": { "type": "string", "examples": ["assurekit-eval", "@assurekit/flows"] },
+    "tool_version": { "type": "string" },
+    "run_id": { "type": "string" },
+    "started_at": { "type": "string", "format": "date-time" },
+    "finished_at": { "type": "string", "format": "date-time" },
+    "subject": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "status": { "enum": ["passed", "failed", "skipped", "error"] },
+          "duration_ms": { "type": "integer", "minimum": 0 },
+          "metrics": {
+            "type": "object",
+            "additionalProperties": { "type": ["number", "boolean", "string"] }
+          },
+          "risk_tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Framework identifiers, e.g. OWASP-LLM09:2025 or NIST-AI-600-1:confabulation."
+          },
+          "trace_id": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  }
+}
