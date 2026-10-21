@@ -26,7 +26,7 @@ The value of this record is that it is genuine. Commit as you actually work. Nev
 
 - [ ] **Employer clearance.** You work at a credit union and AssureKit targets credit unions. Get written outside-activity clearance under your employer's policies. Build only on a personal computer and personal accounts, with no employer code, data, configuration or time.
 - [ ] **Attorney check.** Confirm with your attorney which repository artifacts they want as exhibits (release pages, CI history, commit graph, Zenodo records) and how to capture them.
-- [ ] **GitHub organization.** Create the organization at github.com/organizations/plan (Free plan). Try `malikan`; if taken, use `malikan-inc` and replace `malikan/assurekit` across the repository with VS Code's **Find in Files → Replace** (Ctrl/Cmd+Shift+H). Add the Malikan website and a contact email to the organization profile, and later verify the Malikan domain under the organization's settings.
+- [ ] **GitHub organization.** Create the organization at github.com/organizations/plan (Free plan). Try `malikan`; if taken, use `malikan-inc` and replace `malikan-inc/assurekit` across the repository with VS Code's **Find in Files → Replace** (Ctrl/Cmd+Shift+H). Add the Malikan website and a contact email to the organization profile, and later verify the Malikan domain under the organization's settings.
 - [ ] **Business plan alignment.** Use the same release dates in the business plan as in ROADMAP.md.
 
 ---
@@ -96,7 +96,7 @@ gh ssh-key add ~/.ssh/id_ed25519.pub --type signing --title "AssureKit signing"
    git init
    git add .
    git commit -m "chore: initial AssureKit scaffold with Apache-2.0 licence and CI"
-   gh repo create malikan/assurekit --public --source . --push \
+   gh repo create malikan-inc/assurekit --public --source . --push \
      --description "Open-source release assurance for FinTechs and credit unions: test the app, the data and the AI in one pipeline."
    ```
 
@@ -111,7 +111,7 @@ gh ssh-key add ~/.ssh/id_ed25519.pub --type signing --title "AssureKit signing"
    bash scripts/bootstrap-github.sh
    ```
 
-6. **Zenodo (do this before v0.1.0).** Sign in at zenodo.org with GitHub, open **GitHub** in your Zenodo account and switch on `malikan/assurekit`. Every GitHub Release from then on gets an archived, citable DOI with its own date. Add the DOI badge to the README after the first release.
+6. **Zenodo (do this before v0.1.0).** Sign in at zenodo.org with GitHub, open **GitHub** in your Zenodo account and switch on `malikan-inc/assurekit`. Every GitHub Release from then on gets an archived, citable DOI with its own date. Add the DOI badge to the README after the first release.
 7. Confirm the first CI run is green under the **Actions** tab.
 
 ---
@@ -558,7 +558,7 @@ datasets/assurebank-policy-qa.jsonl                            (E-02)
 8. Bump packages to the next development version (`X.Y+1.0.dev0`) in a follow-up commit.
 9. Optional: post a short release note on LinkedIn linking to the release page.
 
-**Optional, from v0.2.0: PyPI.** Create a PyPI account, add a *pending trusted publisher* for `malikan/assurekit` and workflow `release.yml`, then add a publish job using `pypa/gh-action-pypi-publish` with `id-token: write`. Public download pages give a second, independent dated record.
+**Optional, from v0.2.0: PyPI.** Create a PyPI account, add a *pending trusted publisher* for `malikan-inc/assurekit` and workflow `release.yml`, then add a publish job using `pypa/gh-action-pypi-publish` with `id-token: write`. Public download pages give a second, independent dated record.
 
 ---
 

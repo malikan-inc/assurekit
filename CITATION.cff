@@ -8,7 +8,7 @@ authors:
     affiliation: "Malikan Inc."
     # orcid: "https://orcid.org/0000-0000-0000-0000"
   - name: "Malikan Inc."
-repository-code: "https://github.com/malikan/assurekit"
+repository-code: "https://github.com/malikan-inc/assurekit"
 license: Apache-2.0
 abstract: >-
   AssureKit tests the application, its data and its AI together in one

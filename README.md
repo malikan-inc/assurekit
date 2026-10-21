@@ -2,7 +2,7 @@
 
 **Open-source release assurance for FinTechs and credit unions: test the application, the data and the AI in one pipeline.**
 
-[![CI](https://github.com/malikan/assurekit/actions/workflows/ci.yml/badge.svg)](https://github.com/malikan/assurekit/actions/workflows/ci.yml)
+[![CI](https://github.com/malikan-inc/assurekit/actions/workflows/ci.yml/badge.svg)](https://github.com/malikan-inc/assurekit/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 ![Status: pre-release](https://img.shields.io/badge/status-pre--release-orange)
 
@@ -176,7 +176,7 @@ assurekit/
 Requirements: Python 3.12+ and [uv](https://docs.astral.sh/uv/). Node.js 24 LTS and pnpm are needed from v0.3.0.
 
 ```bash
-git clone https://github.com/malikan/assurekit.git
+git clone https://github.com/malikan-inc/assurekit.git
 cd assurekit
 uv sync
 uv run pytest

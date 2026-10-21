@@ -20,6 +20,6 @@ When you cut a release, rename "Unreleased" to the version and today's date, the
 
 and add a compare link at the bottom:
 
-[Unreleased]: https://github.com/malikan/assurekit/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/malikan/assurekit/releases/tag/v0.1.0
+[Unreleased]: https://github.com/malikan-inc/assurekit/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/malikan-inc/assurekit/releases/tag/v0.1.0
 -->

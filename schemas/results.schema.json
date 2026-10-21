@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/malikan/assurekit/schemas/results.schema.json",
+  "$id": "https://github.com/malikan-inc/assurekit/schemas/results.schema.json",
   "title": "AssureKit results v1",
   "description": "Shared results format written by every AssureKit tool and read by @assurekit/evidence.",
   "type": "object",

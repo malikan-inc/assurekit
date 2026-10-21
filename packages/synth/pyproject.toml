@@ -16,8 +16,8 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/malikan/assurekit"
-Changelog = "https://github.com/malikan/assurekit/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/malikan-inc/assurekit"
+Changelog = "https://github.com/malikan-inc/assurekit/blob/main/CHANGELOG.md"
 
 # Uncomment when cli.py exists (issue S-10):
 # [project.scripts]
